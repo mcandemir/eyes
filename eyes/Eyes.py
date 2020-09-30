@@ -93,6 +93,24 @@ class Eyes:
             # cv2.imshow('test', self.images[i])
             # cv2.waitKey(0)
 
+    def get(self, *args):
+        """
+        returns the image or images
+        """
+        # return only the image
+        if len(args) == 1:
+            key = args[0]
+            return np.copy(self.images[key])
+
+        # return multiple images as a dictionary
+        if not args:
+            return self.images.copy()
+        else:
+            specified = {}
+            for i in args:
+                specified[i] = np.copy(self.images[i])
+            return specified
+
     def show(self, *args):
         """
         display the current images
