@@ -73,7 +73,7 @@ class Eyes:
         for i in args:
             self.images[i] = cv2.Canny(self.images[i], threshold1, threshold2)
 
-    def apply_roi(self, *args, corners):
+    def set_roi(self, *args, corners):
         """
         creates our region of interest polygon with mask
         :param args: images we want to apply on
@@ -88,7 +88,7 @@ class Eyes:
 
         for i in args:
             mask = np.zeros_like(self.images[i])
-            cv2.fillPoly(mask, poly, (255, 0, 0))
+            cv2.fillPoly(mask, poly, (255, 255, 255))
             self.images[i] = cv2.bitwise_and(mask, self.images[i])
             # cv2.imshow('test', self.images[i])
             # cv2.waitKey(0)
