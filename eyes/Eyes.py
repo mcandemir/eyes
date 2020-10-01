@@ -30,10 +30,11 @@ class Eyes:
         :param images: images that we want to work on
         """
         self.IMAGES = {}
-        if type(images[0]) is not tuple:
-            images = enumerate(images)
-        for i, img in images:
-            self.IMAGES[i] = img
+        if images:
+            if type(images[0]) is not tuple:
+                images = enumerate(images)
+            for i, img in images:
+                self.IMAGES[i] = img
         self.images = self.IMAGES.copy()
 
     def greyscale(self, *args):
