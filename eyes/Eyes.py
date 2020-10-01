@@ -131,10 +131,21 @@ class Eyes:
 
     def add(self, *images):
         if type(images[0]) is not tuple:
-            images = enumerate(images)
+            images = enumerate(images, start=len(self.images))
         for i, img in images:
             self.IMAGES[i] = img
             self.images[i] = self.IMAGES[i].copy()
+
+    def read(self, *images):
+        """
+        read the parameter inputs as ('path') or (('name', 'path'))
+        """
+        if type(images[0]) is not tuple:
+            images = enumerate(images, start=len(self.images))
+        for i, path in images:
+            self.IMAGES[i] = cv2.imread(path, 1)
+            self.images[i] = self.IMAGES[i].copy()
+
 
     def reset(self, *args):
         """
